@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.parse.ParseImageView
+        android:id="@+id/icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true" />
+
+
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Sample Text"
+        android:textSize="22dp"
+        android:layout_marginBottom="15dp"
+        android:paddingLeft="3dip"
+        android:paddingRight="3dip" />
+
+    <TextView
+        android:id="@+id/favorite_meal_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text1"
+        android:text="Sample Text"
+        android:textSize="30dp"
+        android:layout_centerInParent="true"
+        android:paddingLeft="3dip"
+        android:paddingRight="3dip" />
+
+    <ImageView
+        android:id="@+id/favorite_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text1"
+        android:layout_marginBottom="100dp"
+        android:layout_toRightOf="@id/favorite_meal_rating"
+        android:src="@drawable/ic_action_favorite" />
+
+</RelativeLayout>
