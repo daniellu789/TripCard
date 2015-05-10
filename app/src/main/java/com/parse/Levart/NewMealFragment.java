@@ -2,9 +2,18 @@ package com.parse.Levart;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +28,19 @@ import android.widget.Toast;
 
 import com.parse.GetDataCallback;
 import com.parse.Levart.API.LTAPIConstants;
+import com.parse.Levart.utils.LTLog;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.mealspotting.R;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 /*
  * This fragment manages the data entry for a
@@ -43,6 +59,8 @@ public class NewMealFragment extends Fragment {
 	private TextView mealName;
 	private Spinner mealRating;
 	private ParseImageView mealPreview;
+
+    private ParseFile photoFile;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -70,10 +88,16 @@ public class NewMealFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				InputMethodManager imm = (InputMethodManager) getActivity()
-						.getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.hideSoftInputFromWindow(mealName.getWindowToken(), 0);
-				startCamera();
+//				InputMethodManager imm = (InputMethodManager) getActivity()
+//						.getSystemService(Context.INPUT_METHOD_SERVICE);
+//				imm.hideSoftInputFromWindow(mealName.getWindowToken(), 0);
+//				startCamera();
+
+
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "Select File"), 1);
 			}
 		});
 
@@ -173,5 +197,72 @@ public class NewMealFragment extends Fragment {
 			});
 		}
 	}
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            Uri selectedImageUri = data.getData();
+            ParcelFileDescriptor parcelFileDescriptor;
+                try {
+                    parcelFileDescriptor = getActivity().getContentResolver().openFileDescriptor(selectedImageUri, "r");
+                    FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+                    Bitmap mealImage = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                    parcelFileDescriptor.close();
+
+
+                    Bitmap mealImageScaled = Bitmap.createScaledBitmap(mealImage,
+                            LTAPIConstants.IMAGE_WIDTH_SIZE, LTAPIConstants.IMAGE_WIDTH_SIZE
+                                    * mealImage.getHeight() / mealImage.getWidth(), false);
+
+                    Matrix matrix = new Matrix();
+                    matrix.postRotate(90);
+                    Bitmap rotatedScaledMealImage = Bitmap.createBitmap(mealImageScaled, 0,
+                            0, mealImageScaled.getWidth(), mealImageScaled.getHeight(),
+                            matrix, true);
+
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    rotatedScaledMealImage.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+
+                    byte[] scaledData = bos.toByteArray();
+                    photoFile = new ParseFile("meal_photo.jpg", scaledData);
+
+                    photoFile.saveInBackground(new SaveCallback() {
+
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                Toast.makeText(getActivity(),
+                                        "Error saving: " + e.getMessage(),
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getActivity(),
+                                        "Saved???? ",
+                                        Toast.LENGTH_LONG).show();
+                                addPhotoToMealAndReturn(photoFile);
+                            }
+                        }
+                    });
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+
+                // Override Android default landscape orientation and save portrait
+
+
+            }
+    }
+
+    private void addPhotoToMealAndReturn(ParseFile photoFile) {
+        ((NewMealActivity) getActivity()).getCurrentMeal().setPhotoFile(
+                photoFile);
+        FragmentManager fm = getActivity().getFragmentManager();
+        fm.popBackStack("NewMealFragment",
+                FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
 
 }

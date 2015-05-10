@@ -144,6 +144,9 @@ public class CameraFragment extends Fragment {
 							"Error saving: " + e.getMessage(),
 							Toast.LENGTH_LONG).show();
 				} else {
+                    Toast.makeText(getActivity(),
+                            "Saved!!! ",
+                            Toast.LENGTH_LONG).show();
 					addPhotoToMealAndReturn(photoFile);
 				}
 			}
