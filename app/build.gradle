@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 11
+    compileSdkVersion 21
     buildToolsVersion "22.0.0"
 
     defaultConfig {
         applicationId "com.levart.TripCard"
-        minSdkVersion 11
-        targetSdkVersion 15
+        minSdkVersion 21
+        targetSdkVersion 21
     }
 
     buildTypes {
