@@ -1,4 +1,4 @@
-package com.parse.Levart;
+package com.parse.TripCard;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.parse.mealspotting.R;
+import com.levart.TripCard.R;
+
 
 /*
  * NewMealActivity contains two fragments that handle

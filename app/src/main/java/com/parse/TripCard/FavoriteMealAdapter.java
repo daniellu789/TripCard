@@ -1,8 +1,7 @@
-package com.parse.Levart;
+package com.parse.TripCard;
 
 import java.util.Arrays;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -10,16 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.levart.TripCard.R;
 import com.parse.GetDataCallback;
-import com.parse.Levart.API.LTAPIConstants;
-import com.parse.Levart.Activities.MealListActivity;
-import com.parse.Levart.utils.LTLog;
+import com.parse.TripCard.API.LTAPIConstants;
+import com.parse.TripCard.utils.LTLog;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
-import com.parse.mealspotting.R;
+
 
 /*
  * The FavoriteMealAdapter is an extension of ParseQueryAdapter

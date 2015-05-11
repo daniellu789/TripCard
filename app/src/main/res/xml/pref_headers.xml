@@ -3,15 +3,15 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="com.parse.Levart.Activities.SettingsActivity$GeneralPreferenceFragment"
+        android:fragment="com.parse.TripCard.Activities.SettingsActivity$GeneralPreferenceFragment"
         android:title="@string/pref_header_general" />
 
     <header
-        android:fragment="com.parse.Levart.Activities.SettingsActivity$NotificationPreferenceFragment"
+        android:fragment="com.parse.TripCard.Activities.SettingsActivity$NotificationPreferenceFragment"
         android:title="@string/pref_header_notifications" />
 
     <header
-        android:fragment="com.parse.Levart.Activities.SettingsActivity$DataSyncPreferenceFragment"
+        android:fragment="com.parse.TripCard.Activities.SettingsActivity$DataSyncPreferenceFragment"
         android:title="@string/pref_header_data_sync" />
 
 </preference-headers>

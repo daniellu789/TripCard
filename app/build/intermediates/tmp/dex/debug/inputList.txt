@@ -1,5 +1,5 @@
-/Users/dlu/Documents/Android/MealSpotting-master1/app/build/intermediates/classes/debug
-/Users/dlu/Documents/Android/MealSpotting-master1/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-c1abd155d094685c53e47b8eeb3bbc2296a46c7f.jar
-/Users/dlu/Documents/Android/MealSpotting-master1/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-c081bfd495484bc755566eeea79dc54eef7007db.jar
-/Users/dlu/Documents/Android/MealSpotting-master1/app/build/intermediates/pre-dexed/debug/Parse-1.3.2-890946ad0aa6f3d1f52fe72eb4f5e558fc609a2f.jar
-/Users/dlu/Documents/Android/MealSpotting-master1/app/build/intermediates/pre-dexed/debug/classes-2b90cf1249810e6017af8cc6e5b4949021586895.jar
+/Users/jiecongwang/TripCard/app/build/intermediates/classes/debug
+/Users/jiecongwang/TripCard/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-081cc5c577f8db6b84fe1f7886b0b252d2cee31b.jar
+/Users/jiecongwang/TripCard/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-be63cf92b92e25abf825e9a284762932de117059.jar
+/Users/jiecongwang/TripCard/app/build/intermediates/pre-dexed/debug/Parse-1.3.2-08caa96e8d486b06c8765294e3656d5dfbd82710.jar
+/Users/jiecongwang/TripCard/app/build/intermediates/pre-dexed/debug/classes-9079db76472a891ba5d4f9f94847719bc0796bf9.jar

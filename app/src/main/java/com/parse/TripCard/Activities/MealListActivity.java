@@ -1,4 +1,4 @@
-package com.parse.Levart.Activities;
+package com.parse.TripCard.Activities;
 
 import android.app.Activity;
 import android.app.ListActivity;
@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.Levart.Card;
-import com.parse.Levart.FavoriteMealAdapter;
-import com.parse.Levart.NewMealActivity;
+import com.levart.TripCard.R;
+import com.parse.TripCard.Card;
+import com.parse.TripCard.FavoriteMealAdapter;
+import com.parse.TripCard.NewMealActivity;
 import com.parse.ParseQueryAdapter;
-import com.parse.mealspotting.R;
+
 
 public class MealListActivity extends ListActivity {
 
