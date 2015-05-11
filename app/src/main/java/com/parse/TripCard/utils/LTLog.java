@@ -1,8 +1,8 @@
-package com.parse.Levart.utils;
+package com.parse.TripCard.utils;
 
 import android.util.Log;
 
-import com.parse.Levart.LTApplication;
+import com.parse.TripCard.LTApplication;
 
 /**
  * Created by dlu on 5/3/15.

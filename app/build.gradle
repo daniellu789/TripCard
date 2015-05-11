@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.0"
 
     defaultConfig {
-        applicationId "com.parse.mealspotting"
+        applicationId "com.levart.TripCard"
         minSdkVersion 11
         targetSdkVersion 15
     }
