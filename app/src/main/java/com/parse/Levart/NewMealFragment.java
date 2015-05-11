@@ -18,9 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +32,7 @@ import android.widget.Toast;
 
 import com.parse.GetDataCallback;
 import com.parse.Levart.API.LTAPIConstants;
+import com.parse.Levart.API.Location.LocationElement;
 import com.parse.Levart.utils.LTLog;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -36,11 +41,21 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.mealspotting.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 
 /*
  * This fragment manages the data entry for a
@@ -51,7 +66,7 @@ import java.io.InputStream;
  * preview at the bottom, which is a standalone
  * ParseImageView.
  */
-public class NewMealFragment extends Fragment {
+public class NewMealFragment extends Fragment implements AdapterView.OnItemClickListener {
 
 	private ImageButton photoButton;
 	private Button saveButton;
@@ -62,6 +77,13 @@ public class NewMealFragment extends Fragment {
 
     private ParseFile photoFile;
 
+    private static final String LOG_TAG = NewMealFragment.class.getSimpleName();
+    private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
+    private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
+    private static final String OUT_JSON = "/json";
+
+    private static GooglePlacesAutocompleteAdapter googlePlaceAdapter;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,7 +93,7 @@ public class NewMealFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle SavedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_new_meal, parent, false);
-
+        googlePlaceAdapter = new GooglePlacesAutocompleteAdapter(getActivity(), R.layout.list_item);
 		mealName = ((EditText) v.findViewById(R.id.meal_name));
 
 		// The mealRating spinner lets people assign favorites of meals they've
@@ -94,10 +116,15 @@ public class NewMealFragment extends Fragment {
 //				startCamera();
 
 
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "Select File"), 1);
+//                Intent intent = new Intent(getActivity(), GooglePlacesAutocompleteActivity.class);
+//                startActivity(intent);
+
+
+
+//                Intent intent = new Intent(Intent.ACTION_PICK,
+//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                intent.setType("image/*");
+//                startActivityForResult(Intent.createChooser(intent, "Select File"), 1);
 			}
 		});
 
@@ -155,6 +182,13 @@ public class NewMealFragment extends Fragment {
 		// Until the user has taken a photo, hide the preview
 		mealPreview = (ParseImageView) v.findViewById(R.id.meal_preview_image);
 		mealPreview.setVisibility(View.INVISIBLE);
+
+
+        getActivity().setContentView(R.layout.fragment_new_meal);
+        AutoCompleteTextView autoCompView = (AutoCompleteTextView) getActivity().findViewById(R.id.cardLocationAutoCompleteTextView);
+
+        autoCompView.setAdapter(googlePlaceAdapter);
+        autoCompView.setOnItemClickListener(this);
 
 		return v;
 	}
@@ -263,6 +297,131 @@ public class NewMealFragment extends Fragment {
         FragmentManager fm = getActivity().getFragmentManager();
         fm.popBackStack("NewMealFragment",
                 FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    public static ArrayList<LocationElement> locationAutocomplete(String input) {
+        ArrayList<LocationElement> resultList = null;
+
+        HttpURLConnection conn = null;
+        StringBuilder jsonResults = new StringBuilder();
+        try {
+            StringBuilder sb = new StringBuilder(PLACES_API_BASE + TYPE_AUTOCOMPLETE + OUT_JSON);
+            sb.append("?key=" + LTAPIConstants.GOOGLE_PLACE_API_KEY);
+            sb.append("&input=" + URLEncoder.encode(input, "utf8"));
+
+            LTLog.debug(LOG_TAG, sb.toString());
+
+            URL url = new URL(sb.toString());
+            conn = (HttpURLConnection) url.openConnection();
+            InputStreamReader in = new InputStreamReader(conn.getInputStream());
+
+            // Load the results into a StringBuilder
+            int read;
+            char[] buff = new char[1024];
+            while ((read = in.read(buff)) != -1) {
+                jsonResults.append(buff, 0, read);
+            }
+        } catch (MalformedURLException e) {
+            LTLog.error(LOG_TAG, "Error processing Places API URL", e);
+            return resultList;
+        } catch (IOException e) {
+            LTLog.error(LOG_TAG, "Error connecting to Places API", e);
+            return resultList;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+        LTLog.debug(LOG_TAG, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        String forAna = jsonResults.toString().replace("\n", "");
+        LTLog.debug(LOG_TAG, forAna);
+        LTLog.debug(LOG_TAG, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+        try {
+            // Create a JSON object hierarchy from the results
+            JSONObject jsonObj = new JSONObject(jsonResults.toString());
+            JSONArray predsJsonArray = jsonObj.getJSONArray("predictions");
+
+            // Extract the Place descriptions from the results
+            resultList = new ArrayList(predsJsonArray.length());
+            for (int i = 0; i < predsJsonArray.length(); i++) {
+                LTLog.debug(LOG_TAG, predsJsonArray.getJSONObject(i).getString("description"));
+                LTLog.debug(LOG_TAG, "============================================================");
+                LocationElement le = new LocationElement("GOOGLE",
+                        predsJsonArray.getJSONObject(i).getString("description"),
+                        predsJsonArray.getJSONObject(i).getString("place_id"));
+                resultList.add(le);
+            }
+        } catch (JSONException e) {
+            LTLog.error(LOG_TAG, "Cannot process JSON results", e);
+        }
+
+        return resultList;
+    }
+
+
+    class GooglePlacesAutocompleteAdapter extends ArrayAdapter implements Filterable {
+        private ArrayList<LocationElement> resultList;
+
+        public GooglePlacesAutocompleteAdapter(Context context, int textViewResourceId) {
+            super(context, textViewResourceId);
+        }
+
+        @Override
+        public int getCount() {
+            return resultList.size();
+        }
+
+        @Override
+        public String getItem(int index) {
+            return "hehe";
+//            return resultList.get(index).getFullName();
+        }
+
+        public LocationElement getLocationElementItem(int index)
+        {
+            return resultList.get(index);
+        }
+
+        public ArrayList<LocationElement> getResultList() {
+            return resultList;
+        }
+
+        @Override
+        public Filter getFilter() {
+            Filter filter = new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    FilterResults filterResults = new FilterResults();
+                    if (constraint != null) {
+                        // Retrieve the autocomplete results.
+                        resultList = locationAutocomplete(constraint.toString());
+
+                        // Assign the data to the FilterResults
+                        filterResults.values = resultList;
+                        filterResults.count = resultList.size();
+                    }
+                    return filterResults;
+                }
+
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+                    if (results != null && results.count > 0) {
+                        notifyDataSetChanged();
+                    } else {
+                        notifyDataSetInvalidated();
+                    }
+                }
+            };
+            return filter;
+        }
+    }
+
+    public void onItemClick(AdapterView adapterView, View view, int position, long id) {
+        LocationElement le = googlePlaceAdapter.getLocationElementItem(position);
+        String placeFullName = (String) adapterView.getItemAtPosition(position);
+        String placeId = (String) adapterView.getItemAtPosition(position);
+        Toast.makeText(getActivity(), le.getFullName(), Toast.LENGTH_SHORT).show();
     }
 
 }
