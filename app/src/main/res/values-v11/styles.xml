@@ -1,5 +1,10 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Holo.Light" />
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:colorPrimary">#589100</item>
+        <item name="android:colorPrimaryDark">#4B7E37</item>
+        <item name="android:colorAccent">#589100</item>
+
+    </style>
 
 </resources>
