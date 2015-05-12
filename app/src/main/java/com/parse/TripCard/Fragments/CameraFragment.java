@@ -1,4 +1,4 @@
-package com.parse.TripCard;
+package com.parse.TripCard.Fragments;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -25,6 +25,7 @@ import com.parse.TripCard.API.LTAPIConstants;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.SaveCallback;
+import com.parse.TripCard.NewMealActivity;
 
 
 public class CameraFragment extends Fragment {

@@ -1,4 +1,4 @@
-package com.parse.TripCard;
+package com.parse.TripCard.Fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -30,6 +30,9 @@ import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.TripCard.Card;
+import com.parse.TripCard.Fragments.CameraFragment;
+import com.parse.TripCard.NewMealActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;

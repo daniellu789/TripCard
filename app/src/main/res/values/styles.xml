@@ -1,10 +1,15 @@
 <resources>
-
     <style name="AppTheme" parent="android:Theme.Material.Light">
         <item name="android:colorPrimary">#589100</item>
         <item name="android:colorPrimaryDark">#4B7E37</item>
         <item name="android:colorAccent">#589100</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:actionBarTabTextStyle">@style/actionBarTabText</item>
+    </style>
 
+
+    <style name="actionBarTabText" parent="android:Widget.Holo.Light.ActionBar.TabText">
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
 </resources>

@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.levart.TripCard.R;
+import com.parse.TripCard.Fragments.NewMealFragment;
 
 
 /*

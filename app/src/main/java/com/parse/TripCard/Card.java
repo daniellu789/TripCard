@@ -5,6 +5,8 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.io.Serializable;
+
 /*
  * An extension of ParseObject that makes
  * it more convenient to access information
@@ -12,7 +14,7 @@ import com.parse.ParseUser;
  */
 
 @ParseClassName("Card")
-public class Card extends ParseObject {
+public class Card extends ParseObject implements Serializable {
 
 	public Card() {
 		// A default constructor is required.
