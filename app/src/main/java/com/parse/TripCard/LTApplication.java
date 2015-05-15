@@ -19,7 +19,7 @@ public class LTApplication extends Application {
 		 * In this tutorial, we'll subclass ParseObject for convenience to
 		 * create and modify Meal objects
 		 */
-		ParseObject.registerSubclass(Card.class);
+		ParseObject.registerSubclass(TripCard.class);
 
 		/*
 		 * Fill in this section with your Parse credentials

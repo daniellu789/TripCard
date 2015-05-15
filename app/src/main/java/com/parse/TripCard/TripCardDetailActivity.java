@@ -10,34 +10,29 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 import com.levart.TripCard.R;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.TripCard.Adapters.TripCardAdapter;
 
-public class TripCardDetailActivity extends Activity implements ActionBar.TabListener {
+import java.util.List;
 
+public class TripCardDetailActivity extends Activity {
 
     TripCardAdapter mAdapter;
 
     ViewPager mViewPager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_card_detail);
-
-        final ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        String[] tabsTitle = getResources().getStringArray(R.array.ratings_array);
-        for (String title :tabsTitle) {
-            actionBar.addTab(actionBar.newTab().setText(title).setTabListener(this));
-        }
 
         mAdapter = new TripCardAdapter(getFragmentManager());
 
@@ -46,6 +41,23 @@ public class TripCardDetailActivity extends Activity implements ActionBar.TabLis
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mAdapter.isEmpty()) {
+            ParseQuery<TripCard> parseQuery = ParseQuery.getQuery("TripCard");
+            parseQuery.findInBackground(new FindCallback<TripCard>() {
+                @Override
+                public void done(List<TripCard> cards, ParseException e) {
+                    if (e == null) {
+                        mAdapter.updateData(cards);
+                    } else {
+
+                    }
+                }
+            });
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,20 +80,5 @@ public class TripCardDetailActivity extends Activity implements ActionBar.TabLis
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-    }
-
 
 }
