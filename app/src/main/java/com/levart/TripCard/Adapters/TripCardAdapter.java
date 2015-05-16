@@ -1,13 +1,12 @@
-package com.parse.TripCard.Adapters;
+package com.levart.TripCard.Adapters;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.v13.app.FragmentPagerAdapter;
-import android.util.Log;
 
 
-import com.parse.TripCard.Fragments.TripCardDetailFragment;
-import com.parse.TripCard.TripCard;
+import com.levart.TripCard.TripCard;
+import com.levart.TripCard.Fragments.TripCardDetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;

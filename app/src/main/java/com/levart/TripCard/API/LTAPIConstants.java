@@ -1,4 +1,4 @@
-package com.parse.TripCard.API;
+package com.levart.TripCard.API;
 
 import java.util.HashMap;
 import java.util.Map;

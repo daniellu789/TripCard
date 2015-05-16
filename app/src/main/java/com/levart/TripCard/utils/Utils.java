@@ -1,4 +1,4 @@
-package com.parse.TripCard.utils;
+package com.levart.TripCard.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

@@ -1,6 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.parse.TripCard.TripCardDetailActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" android:showAsAction="never" />
+    tools:context="com.levart.TripCard.TripCardDetailActivity">
+
+    <item android:id="@+id/read_card"
+          android:title="@string/read_card"
+          android:icon="@drawable/read_card_normal">
+
+    </item>
+
+
 </menu>

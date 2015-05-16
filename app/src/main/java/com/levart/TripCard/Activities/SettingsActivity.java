@@ -1,4 +1,4 @@
-package com.parse.TripCard.Activities;
+package com.levart.TripCard.Activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;

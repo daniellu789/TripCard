@@ -1,4 +1,4 @@
-package com.parse.TripCard.Activities;
+package com.levart.TripCard.Activities;
 
 import android.app.Activity;
 import android.app.ListActivity;
@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.levart.TripCard.Card;
+import com.levart.TripCard.FavoriteMealAdapter;
+import com.levart.TripCard.NewMealActivity;
 import com.levart.TripCard.R;
-import com.parse.TripCard.Card;
-import com.parse.TripCard.FavoriteMealAdapter;
-import com.parse.TripCard.NewMealActivity;
 import com.parse.ParseQueryAdapter;
 
 

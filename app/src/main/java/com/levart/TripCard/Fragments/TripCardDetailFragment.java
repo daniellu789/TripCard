@@ -1,19 +1,16 @@
-package com.parse.TripCard.Fragments;
+package com.levart.TripCard.Fragments;
 
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.levart.TripCard.R;
+import com.levart.TripCard.TripCard;
 import com.parse.ParseImageView;
-import com.parse.ParseObject;
-import com.parse.TripCard.Card;
-import com.parse.TripCard.TripCard;
 
 
 public class TripCardDetailFragment extends Fragment {

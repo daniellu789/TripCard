@@ -1,4 +1,4 @@
-package com.parse.TripCard;
+package com.levart.TripCard;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.levart.TripCard.R;
-import com.parse.TripCard.Fragments.NewMealFragment;
+import com.levart.TripCard.Fragments.NewMealFragment;
 
 
 /*

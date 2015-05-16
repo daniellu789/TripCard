@@ -1,4 +1,4 @@
-package com.parse.TripCard;
+package com.levart.TripCard;
 
 import com.parse.ParseClassName;
 import com.parse.ParseFile;

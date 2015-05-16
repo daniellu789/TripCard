@@ -1,4 +1,4 @@
-package com.parse.TripCard.Fragments;
+package com.levart.TripCard.Fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -22,17 +22,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.levart.TripCard.Card;
+import com.levart.TripCard.NewMealActivity;
 import com.levart.TripCard.R;
 import com.parse.GetDataCallback;
-import com.parse.TripCard.API.LTAPIConstants;
+import com.levart.TripCard.API.LTAPIConstants;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.parse.TripCard.Card;
-import com.parse.TripCard.Fragments.CameraFragment;
-import com.parse.TripCard.NewMealActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;

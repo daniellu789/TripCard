@@ -1,4 +1,4 @@
-package com.parse.TripCard.Fragments;
+package com.levart.TripCard.Fragments;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -21,11 +21,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.levart.TripCard.R;
-import com.parse.TripCard.API.LTAPIConstants;
+import com.levart.TripCard.API.LTAPIConstants;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.SaveCallback;
-import com.parse.TripCard.NewMealActivity;
+import com.levart.TripCard.NewMealActivity;
 
 
 public class CameraFragment extends Fragment {

@@ -1,25 +1,20 @@
-package com.parse.TripCard;
+package com.levart.TripCard;
 
 
 
 import android.app.Activity;
-import android.app.ActionBar;
-
-import android.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Toolbar;
 
 
-import com.levart.TripCard.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.parse.TripCard.Adapters.TripCardAdapter;
+import com.levart.TripCard.Adapters.TripCardAdapter;
 
 import java.util.List;
 
@@ -29,13 +24,13 @@ public class TripCardDetailActivity extends Activity {
 
     ViewPager mViewPager;
 
+    Toolbar mToolBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_card_detail);
-
         mAdapter = new TripCardAdapter(getFragmentManager());
-
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAdapter);
 
@@ -60,25 +55,7 @@ public class TripCardDetailActivity extends Activity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_trip_card_detail, menu);
-        return true;
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return false;
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 }

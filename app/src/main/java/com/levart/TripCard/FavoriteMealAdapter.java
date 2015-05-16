@@ -1,4 +1,4 @@
-package com.parse.TripCard;
+package com.levart.TripCard;
 
 import java.util.Arrays;
 
@@ -9,10 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.levart.TripCard.R;
 import com.parse.GetDataCallback;
-import com.parse.TripCard.API.LTAPIConstants;
-import com.parse.TripCard.utils.LTLog;
+import com.levart.TripCard.API.LTAPIConstants;
+import com.levart.TripCard.utils.LTLog;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
