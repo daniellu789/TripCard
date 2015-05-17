@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomToolBar">
+        <attr name="Activity" format="enum">
+            <enum name="write_card" value="0"></enum>
+            <enum name="read_card"  value="1"></enum>
+            <enum name="already_save" value="2"></enum>
+        </attr>
+    </declare-styleable>
+</resources>

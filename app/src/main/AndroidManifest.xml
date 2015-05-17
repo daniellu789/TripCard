@@ -14,7 +14,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
 
     <android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -25,33 +25,37 @@
         android:maxSdkVersion="18" />
 
     <application
-        android:name="com.parse.TripCard.LTApplication"
+        android:name=".LTApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.parse.TripCard.Activities.MealListActivity"
+            android:name=".Activities.MealListActivity"
             android:label="@string/title_activity_meal_list" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.Activity" />
         </activity>
         <activity
-            android:name="com.parse.TripCard.NewMealActivity"
+            android:name=".NewMealActivity"
             android:label="@string/title_activity_new_meal" >
         </activity>
         <activity
-            android:name="com.parse.TripCard.Activities.SettingsActivity"
+            android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.parse.TripCard.Activities.MealListActivity" />
+                android:value=".Activities.MealListActivity" />
+        </activity>
+        <activity
+            android:name=".TripCardDetailActivity"
+            android:label="@string/title_activity_trip_card_detail">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

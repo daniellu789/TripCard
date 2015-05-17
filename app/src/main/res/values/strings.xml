@@ -11,11 +11,23 @@
     <string name="meal_label">Add a Meal</string>
     <string name="save_button_text">Save</string>
     <string name="cancel_button_text">Cancel</string>
-
-    <string-array name="ratings_array">
-        <item>交通</item>
+    <string name="read_card">看卡片</string>
+    <string name="write_card">写卡片</string>
+    <string name="already_save"> 收藏</string>
+    <array name="ratings_array">
         <item>景点</item>
-        <item></item>
-    </string-array>
+        <item>酒店</item>
+        <item>餐厅</item>
+    </array>
+
+    <string name="title_activity_trip_card_detail">旅游卡片</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+
+    <string name="action_settings">Settings</string>
+
 
 </resources>
