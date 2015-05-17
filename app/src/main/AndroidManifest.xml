@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.parse.mealspotting"
+    package="com.levart.TripCard"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -25,12 +25,12 @@
         android:maxSdkVersion="18" />
 
     <application
-        android:name="com.parse.Levart.LTApplication"
+        android:name="com.parse.TripCard.LTApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.parse.Levart.Activities.MealListActivity"
+            android:name="com.parse.TripCard.Activities.MealListActivity"
             android:label="@string/title_activity_meal_list" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,15 +43,15 @@
                 android:value="android.app.Activity" />
         </activity>
         <activity
-            android:name="com.parse.Levart.NewMealActivity"
+            android:name="com.parse.TripCard.NewMealActivity"
             android:label="@string/title_activity_new_meal" >
         </activity>
         <activity
-            android:name="com.parse.Levart.Activities.SettingsActivity"
+            android:name="com.parse.TripCard.Activities.SettingsActivity"
             android:label="@string/title_activity_settings" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.parse.Levart.Activities.MealListActivity" />
+                android:value="com.parse.TripCard.Activities.MealListActivity" />
         </activity>
         <activity
             android:name="com.parse.Levart.Activities.GooglePlacesAutocompleteActivity"
