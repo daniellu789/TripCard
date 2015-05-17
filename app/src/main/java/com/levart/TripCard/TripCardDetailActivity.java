@@ -4,13 +4,16 @@ package com.levart.TripCard;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
 import android.view.Menu;
+import android.view.View;
 import android.widget.Toolbar;
 
 
+import com.levart.TripCard.Views.BottomToolBar;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -24,16 +27,29 @@ public class TripCardDetailActivity extends Activity {
 
     ViewPager mViewPager;
 
-    Toolbar mToolBar;
+    BottomToolBar mToolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_card_detail);
+        mToolBar = (BottomToolBar)findViewById(R.id.cards_tool_bar);
         mAdapter = new TripCardAdapter(getFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAdapter);
+        mToolBar.setWriteCardListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        mToolBar.setAlreadySaveListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

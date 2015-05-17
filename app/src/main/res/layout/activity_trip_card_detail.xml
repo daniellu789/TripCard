@@ -1,6 +1,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -26,11 +27,13 @@
 
         </View>
 
-        <Toolbar
+        <com.levart.TripCard.Views.BottomToolBar
             android:id="@+id/cards_tool_bar"
             android:layout_width="match_parent"
             android:minHeight="?android:attr/actionBarSize"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            custom:Activity="read_card"
         />
     </LinearLayout>
 
