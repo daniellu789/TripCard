@@ -1,15 +1,16 @@
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:colorPrimary">#589100</item>
-        <item name="android:colorPrimaryDark">#4B7E37</item>
-        <item name="android:colorAccent">#589100</item>
-        <item name="android:textColorPrimary">#FFFFFF</item>
-        <item name="android:actionBarTabTextStyle">@style/actionBarTabText</item>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/actionBar</item>
+    </style>
+
+    <style name="actionBar" parent="android:Widget.Holo.Light.ActionBar">
+        <item name="android:background">#4B7E37</item>
+        <item name="android:titleTextStyle">@style/titleText</item>
     </style>
 
 
-    <style name="actionBarTabText" parent="android:Widget.Holo.Light.ActionBar.TabText">
+    <style name="titleText" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">#FFFFFF</item>
     </style>
 

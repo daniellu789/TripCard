@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.levart.TripCard"
-        minSdkVersion 21
+        minSdkVersion 15
         targetSdkVersion 21
     }
 
