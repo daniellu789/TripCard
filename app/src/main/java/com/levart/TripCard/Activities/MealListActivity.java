@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.levart.TripCard.R;
 import com.levart.TripCard.Card;
 import com.levart.TripCard.FavoriteMealAdapter;
 import com.levart.TripCard.NewMealActivity;

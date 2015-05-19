@@ -11,7 +11,7 @@ public class LTAPIConstants {
     public static final int TAG_TRAFFIC = 1;
     public static final int TAG_ATTRACTION = 2;
     public static final String GOOGLE_PROVIDER = "GOOGLE";
-    public static final int IMAGE_WIDTH_SIZE = 500;
+    public static final int IMAGE_WIDTH_SIZE = 800;
     public static final String GOOGLE_PLACE_API_KEY = "AIzaSyBcBkS15uizw9ZDv6NSv3toBj-NhV1I-n8";
     public static final String KEYWORD = "关键词：";
     public static final HashMap<Integer, String> TAG_TO_NAME = new HashMap<Integer, String>();
