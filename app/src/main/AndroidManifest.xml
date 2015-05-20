@@ -38,7 +38,7 @@
                 android:value="android.app.Activity" />
         </activity>
         <activity
-            android:name=".NewMealActivity"
+            android:name=".Activities.NewTripCardActivity"
             android:label="@string/title_activity_new_meal" >
         </activity>
         <activity

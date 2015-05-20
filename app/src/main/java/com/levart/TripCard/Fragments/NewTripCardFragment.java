@@ -14,7 +14,6 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.levart.TripCard.NewMealActivity;
+import com.levart.TripCard.Activities.NewTripCardActivity;
 import com.levart.TripCard.R;
 import com.levart.TripCard.TripCard;
 import com.parse.GetDataCallback;
@@ -69,7 +68,7 @@ import java.util.ArrayList;
  * preview at the bottom, which is a standalone
  * ParseImageView.
  */
-public class NewMealFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class NewTripCardFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private ImageButton photoButton;
     private Button saveButton;
@@ -80,7 +79,7 @@ public class NewMealFragment extends Fragment implements AdapterView.OnItemClick
 
     private ParseFile photoFile;
 
-    private static final String LOG_TAG = NewMealFragment.class.getSimpleName();
+    private static final String LOG_TAG = NewTripCardFragment.class.getSimpleName();
     private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
     private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     private static final String OUT_JSON = "/json";
@@ -124,7 +123,7 @@ public class NewMealFragment extends Fragment implements AdapterView.OnItemClick
 
             @Override
             public void onClick(View v) {
-                TripCard tCard = ((NewMealActivity) getActivity()).getCurrentMeal();
+                TripCard tCard = ((NewTripCardActivity) getActivity()).getCurrentMeal();
 
                 // When the user clicks "Save," upload the meal to Parse
                 // Add data to the meal object:
@@ -208,7 +207,7 @@ public class NewMealFragment extends Fragment implements AdapterView.OnItemClick
     @Override
     public void onResume() {
         super.onResume();
-        ParseFile photoFile = ((NewMealActivity) getActivity())
+        ParseFile photoFile = ((NewTripCardActivity) getActivity())
                 .getCurrentMeal().getPhotoFile();
         if (photoFile != null) {
             mealPreview.setParseFile(photoFile);
@@ -277,7 +276,7 @@ public class NewMealFragment extends Fragment implements AdapterView.OnItemClick
     }
 
     private void addPhotoToMealAndReturn(ParseFile photoFile) {
-        ((NewMealActivity) getActivity()).getCurrentMeal().setPhotoFile(
+        ((NewTripCardActivity) getActivity()).getCurrentMeal().setPhotoFile(
                 photoFile);
         Toast.makeText(getActivity(),
                 "show preview? ",

@@ -20,12 +20,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.levart.TripCard.Activities.NewTripCardActivity;
 import com.levart.TripCard.R;
 import com.levart.TripCard.API.LTAPIConstants;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.SaveCallback;
-import com.levart.TripCard.NewMealActivity;
 
 
 public class CameraFragment extends Fragment {
@@ -162,7 +162,7 @@ public class CameraFragment extends Fragment {
 	 * until we reach that Fragment.
 	 */
 	private void addPhotoToMealAndReturn(ParseFile photoFile) {
-		((NewMealActivity) getActivity()).getCurrentMeal().setPhotoFile(
+		((NewTripCardActivity) getActivity()).getCurrentMeal().setPhotoFile(
 				photoFile);
 		FragmentManager fm = getActivity().getFragmentManager();
 		fm.popBackStack("NewMealFragment",
