@@ -17,11 +17,11 @@ import com.levart.TripCard.Fragments.NewMealFragment;
  */
 public class NewMealActivity extends Activity {
 
-	private Card card;
+	private TripCard card;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		card = new Card();
+		card = new TripCard();
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
@@ -39,7 +39,7 @@ public class NewMealActivity extends Activity {
 		}
 	}
 
-	public Card getCurrentMeal() {
+	public TripCard getCurrentMeal() {
 		return card;
 	}
 
