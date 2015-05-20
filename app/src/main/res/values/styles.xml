@@ -9,6 +9,7 @@
         <item name="android:titleTextStyle">@style/titleText</item>
     </style>
 
+
     <style name="titleText" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">#FFFFFF</item>
     </style>

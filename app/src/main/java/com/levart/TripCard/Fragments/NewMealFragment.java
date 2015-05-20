@@ -32,8 +32,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.levart.TripCard.NewMealActivity;
+import com.levart.TripCard.R;
+import com.levart.TripCard.TripCard;
 import com.parse.GetDataCallback;
-import com.levart.Levart.API.Location.LocationElement;
+import com.levart.TripCard.API.LocationElement;
 import com.levart.TripCard.utils.LTLog;
 import com.levart.TripCard.API.LTAPIConstants;
 import com.parse.ParseException;
@@ -121,23 +124,23 @@ public class NewMealFragment extends Fragment implements AdapterView.OnItemClick
 
             @Override
             public void onClick(View v) {
-                Card card = ((NewMealActivity) getActivity()).getCurrentMeal();
+                TripCard tCard = ((NewMealActivity) getActivity()).getCurrentMeal();
 
                 // When the user clicks "Save," upload the meal to Parse
                 // Add data to the meal object:
-                card.setTitle(mealName.getText().toString());
+                tCard.setTitle(mealName.getText().toString());
 
                 // Associate the meal with the current user
-                card.setAuthor(ParseUser.getCurrentUser());
+                tCard.setAuthor(ParseUser.getCurrentUser());
 
                 // Add the rating
-                card.setTag(LTAPIConstants.NAME_TO_TAG.get(mealRating.getSelectedItem().toString()));
+                tCard.setTag(LTAPIConstants.NAME_TO_TAG.get(mealRating.getSelectedItem().toString()));
 
                 // If the user added a photo, that data will be
                 // added in the CameraFragment
 
                 // Save the meal and return
-                card.saveInBackground(new SaveCallback() {
+                tCard.saveInBackground(new SaveCallback() {
 
                     @Override
                     public void done(ParseException e) {
