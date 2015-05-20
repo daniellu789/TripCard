@@ -10,8 +10,6 @@ import android.view.MenuItem;
 import com.levart.TripCard.R;
 import com.levart.TripCard.Card;
 import com.levart.TripCard.FavoriteMealAdapter;
-import com.levart.TripCard.NewMealActivity;
-import com.levart.TripCard.R;
 import com.parse.ParseQueryAdapter;
 
 
@@ -79,7 +77,7 @@ public class MealListActivity extends ListActivity {
 	}
 
 	private void newMeal() {
-		Intent i = new Intent(this, NewMealActivity.class);
+		Intent i = new Intent(this, NewTripCardActivity.class);
 		startActivityForResult(i, 0);
 	}
 

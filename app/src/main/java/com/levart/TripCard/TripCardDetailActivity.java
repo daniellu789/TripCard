@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toolbar;
 
 
+import com.levart.TripCard.Activities.NewTripCardActivity;
 import com.levart.TripCard.Views.BottomToolBar;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -37,10 +38,12 @@ public class TripCardDetailActivity extends Activity {
         mAdapter = new TripCardAdapter(getFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAdapter);
+        final Activity thisActivity = this;
         mToolBar.setWriteCardListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(thisActivity, NewTripCardActivity.class);
+                startActivity(intent);
             }
         });
 

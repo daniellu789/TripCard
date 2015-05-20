@@ -1,4 +1,4 @@
-package com.levart.TripCard;
+package com.levart.TripCard.Activities;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.levart.TripCard.Fragments.NewMealFragment;
+import com.levart.TripCard.Fragments.NewTripCardFragment;
+import com.levart.TripCard.R;
+import com.levart.TripCard.TripCard;
 
 
 /*
@@ -15,13 +17,13 @@ import com.levart.TripCard.Fragments.NewMealFragment;
  * data entry and capturing a photo of a given meal.
  * The Activity manages the overall meal data.
  */
-public class NewMealActivity extends Activity {
+public class NewTripCardActivity extends Activity {
 
-	private TripCard card;
+	private TripCard tCard;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		card = new TripCard();
+        tCard = new TripCard();
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
@@ -33,14 +35,14 @@ public class NewMealActivity extends Activity {
 		Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
 
 		if (fragment == null) {
-			fragment = new NewMealFragment();
+			fragment = new NewTripCardFragment();
 			manager.beginTransaction().add(R.id.fragmentContainer, fragment)
 					.commit();
 		}
 	}
 
 	public TripCard getCurrentMeal() {
-		return card;
+		return tCard;
 	}
 
 }
