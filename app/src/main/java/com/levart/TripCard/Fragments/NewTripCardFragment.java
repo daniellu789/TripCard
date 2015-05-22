@@ -70,6 +70,7 @@ import java.util.ArrayList;
  */
 public class NewTripCardFragment extends Fragment implements AdapterView.OnItemClickListener {
 
+    private ImageButton imagePreviewButton;
     private ImageButton photoButton;
     private Button saveButton;
     private Button cancelButton;
@@ -94,7 +95,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle SavedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_new_meal, parent, false);
+        View v = inflater.inflate(R.layout.fragment_new_tripcard, parent, false);
         googlePlaceAdapter = new GooglePlacesAutocompleteAdapter(getActivity(), R.layout.list_item);
         mealName = ((EditText) v.findViewById(R.id.meal_name));
         LTLog.debug(LOG_TAG,"creating a new card");
@@ -133,6 +134,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
                 tCard.setAuthor(ParseUser.getCurrentUser());
 
                 // Add the rating
+                LTLog.error(LOG_TAG, "danjietest" + LTAPIConstants.NAME_TO_TAG.get(mealRating.getSelectedItem().toString()));
                 tCard.setTag(LTAPIConstants.NAME_TO_TAG.get(mealRating.getSelectedItem().toString()));
 
                 // If the user added a photo, that data will be

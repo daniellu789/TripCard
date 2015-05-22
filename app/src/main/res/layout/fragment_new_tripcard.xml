@@ -6,8 +6,11 @@
 
     <com.parse.ParseImageView
         android:id="@+id/meal_preview_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="188dp"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_launcher"/>
 
     <TextView
         android:layout_width="match_parent"

@@ -75,7 +75,7 @@ public class TripCard extends ParseObject implements Serializable {
         put("author", user);
     }
 
-    public void setTag(int tag) {
+    public void setTag(String tag) {
         put("tag", tag);
     }
 
