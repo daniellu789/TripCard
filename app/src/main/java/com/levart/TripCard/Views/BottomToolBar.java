@@ -14,10 +14,12 @@ import com.levart.TripCard.R;
  */
 public class BottomToolBar extends LinearLayout {
 
-    private  ImageButton mWriteCard;
-    private  ImageButton mReadCard;
-    private  ImageButton mAlreadySave;
-    private  int currentActivity =0;
+    private ImageButton mWriteCard;
+    private ImageButton mShuffleCars;
+    private ImageButton mAlreadySave;
+    private LinearLayout mWriteCardLayout;
+    private LinearLayout mShuffleCardsLayout;
+    private int currentActivity = 0;
 
 
     public BottomToolBar(Context context) {
@@ -55,15 +57,17 @@ public class BottomToolBar extends LinearLayout {
         super.onFinishInflate();
         mWriteCard = (ImageButton) findViewById(R.id.write_a_card_button);
         mAlreadySave = (ImageButton) findViewById(R.id.already_save_button);
-        mReadCard = (ImageButton) findViewById(R.id.read_card_button);
+        mShuffleCars = (ImageButton) findViewById(R.id.shuffle_cards_button);
+        mWriteCardLayout = (LinearLayout) findViewById(R.id.write_a_card_layout);
+        mShuffleCardsLayout = (LinearLayout) findViewById(R.id.shuffle_cards_layout);
         switch (currentActivity) {
             case 0:
                 mWriteCard.setClickable(false);
                 mWriteCard.setPressed(true);
                 return;
             case 1:
-                mReadCard.setClickable(false);
-                mReadCard.setPressed(true);
+                mShuffleCars.setClickable(false);
+                mShuffleCars.setPressed(true);
                 return;
             case 2:
                 mAlreadySave.setClickable(false);
@@ -74,14 +78,12 @@ public class BottomToolBar extends LinearLayout {
 
     public void setWriteCardListener(OnClickListener listener) {
         mWriteCard.setOnClickListener(listener);
+        mWriteCardLayout.setOnClickListener(listener);
     }
 
-    public void setReadCardListener(OnClickListener listener) {
-        mReadCard.setOnClickListener(listener);
-    }
-
-    public void setAlreadySaveListener(OnClickListener listener) {
-        mReadCard.setOnClickListener(listener);
+    public void setShuffleListener(OnClickListener listener) {
+        mShuffleCars.setOnClickListener(listener);
+        mShuffleCardsLayout.setOnClickListener(listener);
     }
 
 }

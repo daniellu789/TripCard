@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.levart.TripCard.TripCardDetailActivity">
+    tools:context="com.levart.TripCard.Activities.TripCardDetailActivity">
 
     <item android:id="@+id/read_card"
           android:title="@string/read_card"

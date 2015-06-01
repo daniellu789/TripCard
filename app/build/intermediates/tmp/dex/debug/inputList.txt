@@ -4,4 +4,5 @@
 /Users/dlu/Android/TripCard/app/build/intermediates/pre-dexed/debug/classes-aa04765ad30cc30bee6dee37c8fe331c83dac3d7.jar
 /Users/dlu/Android/TripCard/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-66e9ecfcd24298d1d15500d65b1b15da6f1fab16.jar
 /Users/dlu/Android/TripCard/app/build/intermediates/pre-dexed/debug/Parse-1.3.2-3b127d927e975bba5324c110bac85b4e9d91dbae.jar
+/Users/dlu/Android/TripCard/app/build/intermediates/pre-dexed/debug/classes-64597b6b12c7cdf97856c8877ef71e82c3e268b1.jar
 /Users/dlu/Android/TripCard/app/build/intermediates/pre-dexed/debug/classes-29d0047cde4a06b52d7c0c1dc2c13ff2a8f6e1d4.jar

@@ -5,13 +5,14 @@
     >
 
     <LinearLayout
+        android:id="@+id/shuffle_cards_layout"
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/read_card_button"
+            android:id="@+id/shuffle_cards_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,6 +30,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/write_a_card_layout"
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         android:layout_weight="1"
@@ -58,6 +60,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
+        android:visibility="gone"
         >
         <ImageButton
             android:id="@+id/already_save_button"

@@ -1,15 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'levart_llc'
+            keyPassword 'LEVARTLLC123'
+            storeFile file('/Users/dlu/Android/TripCard/tripcard.jks')
+            storePassword 'LEVARTLLC123'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "22.0.0"
-
     defaultConfig {
         applicationId "com.levart.TripCard"
         minSdkVersion 15
         targetSdkVersion 21
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -22,4 +28,5 @@ dependencies {
     compile files('libs/Parse-1.3.2.jar')
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.android.support:support-v13:22.1.1'
+    compile 'com.android.support:appcompat-v7:22.1.1'
 }

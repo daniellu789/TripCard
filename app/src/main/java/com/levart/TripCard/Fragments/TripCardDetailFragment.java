@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.levart.TripCard.API.LTAPIConstants;
 import com.levart.TripCard.R;
 import com.levart.TripCard.TripCard;
 import com.parse.ParseImageView;
@@ -18,6 +19,8 @@ public class TripCardDetailFragment extends Fragment {
     private final static String CARD ="TripCard";
     private TripCard mCard;
     private TextView mDescription;
+    private TextView mTag;
+    private TextView mLocation;
     private ParseImageView mPicture;
 
     public static TripCardDetailFragment newInstance(TripCard card) {
@@ -29,6 +32,17 @@ public class TripCardDetailFragment extends Fragment {
     }
 
     public TripCardDetailFragment() {
+
+    }
+
+    public void setTripCard(TripCard tripCard) {
+        if (tripCard !=null && mDescription != null) {
+            mDescription.setText(tripCard.getDescription());
+            mTag.setText(LTAPIConstants.TAG_TO_NAME.get(tripCard.getTag()));
+            mLocation.setText(tripCard.getLocationFullName());
+            mPicture.setParseFile(tripCard.getPhoto());
+            mPicture.loadInBackground();
+        }
 
     }
 
@@ -46,11 +60,9 @@ public class TripCardDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_trip_card_detail, container, false);
         mDescription =(TextView) view.findViewById(R.id.card_description);
         mPicture = (ParseImageView) view.findViewById(R.id.picture);
-        if (mCard !=null) {
-            mDescription.setText(mCard.getDescription());
-            mPicture.setParseFile(mCard.getPhoto());
-            mPicture.loadInBackground();
-        }
+        mTag = (TextView) view.findViewById(R.id.card_tag);
+        mLocation = (TextView) view.findViewById(R.id.location);
+        setTripCard(mCard);
         return view;
     }
 
