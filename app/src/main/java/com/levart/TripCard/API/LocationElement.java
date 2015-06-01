@@ -9,6 +9,7 @@ public class LocationElement{
     private String sProvider;
     private String sFullName;
     private String sLocationId;
+    private String sCountryCode;
     private String sLongitude;
     private String sLatitude;
 
@@ -22,6 +23,11 @@ public class LocationElement{
     public String getProvider ()
     {
         return sProvider;
+    }
+
+    public String getCountryCode ()
+    {
+        return sCountryCode;
     }
 
     public String getLocationId ()
@@ -41,6 +47,10 @@ public class LocationElement{
     public void setlatitude (String lat)
     {
         sLatitude = lat;
+    }
+    public void setCountryCode (String code)
+    {
+        sCountryCode = code;
     }
 
 }

@@ -39,7 +39,9 @@
         </activity>
         <activity
             android:name=".Activities.NewTripCardActivity"
-            android:label="@string/title_activity_new_meal" >
+            android:label="@string/new_card_cancel"
+            android:parentActivityName=".Activities.TripCardDetailActivity"
+            >
         </activity>
         <activity
             android:name=".Activities.SettingsActivity"
@@ -49,7 +51,7 @@
                 android:value=".Activities.MealListActivity" />
         </activity>
         <activity
-            android:name=".TripCardDetailActivity"
+            android:name=".Activities.TripCardDetailActivity"
             android:label="@string/title_activity_trip_card_detail">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

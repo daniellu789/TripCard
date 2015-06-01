@@ -17,9 +17,12 @@ import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.levart.TripCard.API.LTConfig;
 import com.levart.TripCard.Activities.NewTripCardActivity;
 import com.levart.TripCard.R;
 import com.levart.TripCard.API.LTAPIConstants;
@@ -41,7 +44,6 @@ public class CameraFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_camera, parent, false);
-
 		photoButton = (ImageButton) v.findViewById(R.id.camera_photo_button);
 
 		if (camera == null) {
@@ -126,7 +128,7 @@ public class CameraFragment extends Fragment {
 
 		// Override Android default landscape orientation and save portrait
 		Matrix matrix = new Matrix();
-		matrix.postRotate(90);
+		//matrix.postRotate(90);
 		Bitmap rotatedScaledMealImage = Bitmap.createBitmap(mealImageScaled, 0,
 				0, mealImageScaled.getWidth(), mealImageScaled.getHeight(),
 				matrix, true);
@@ -137,24 +139,26 @@ public class CameraFragment extends Fragment {
 		byte[] scaledData = bos.toByteArray();
 
 		// Save the scaled image to Parse
-		photoFile = new ParseFile("meal_photo.jpg", scaledData);
+		photoFile = new ParseFile("tripCard_photo_camera.jpg", scaledData);
 		photoFile.saveInBackground(new SaveCallback() {
 
 			public void done(ParseException e) {
 				if (e != null) {
-					Toast.makeText(getActivity(),
-							"Error saving: " + e.getMessage(),
-							Toast.LENGTH_LONG).show();
+                    debugShowToast("Error saving: " + e.getMessage());
 				} else {
-                    Toast.makeText(getActivity(),
-                            "Saved!!! ",
-                            Toast.LENGTH_LONG).show();
+                    debugShowToast("Saved!!! ");
 					addPhotoToMealAndReturn(photoFile);
 				}
 			}
 		});
 	}
 
+    private void debugShowToast(String content) {
+        if(LTConfig.DEBUG)
+        {
+            Toast.makeText(getActivity(), content, Toast.LENGTH_LONG).show();
+        }
+    }
 	/*
 	 * Once the photo has saved successfully, we're ready to return to the
 	 * NewMealFragment. When we added the CameraFragment to the back stack, we
@@ -162,7 +166,7 @@ public class CameraFragment extends Fragment {
 	 * until we reach that Fragment.
 	 */
 	private void addPhotoToMealAndReturn(ParseFile photoFile) {
-		((NewTripCardActivity) getActivity()).getCurrentMeal().setPhotoFile(
+		((NewTripCardActivity) getActivity()).getCurrentTripCard().setPhotoFile(
 				photoFile);
 		FragmentManager fm = getActivity().getFragmentManager();
 		fm.popBackStack("NewMealFragment",

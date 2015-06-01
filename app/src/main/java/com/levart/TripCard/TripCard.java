@@ -7,6 +7,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -15,13 +16,16 @@ import java.io.Serializable;
 @ParseClassName("TripCard")
 public class TripCard extends ParseObject implements Serializable {
 
-    private static final String ID = "objectId";
-    private static final String DESCRIPTION ="description";
-    private static final String PRAISE ="praise";
-    private static final String PHOTO ="photo";
-    private static final String LOCATIONNAME ="locationname";
-    private static final String STATUS ="status";
-    private static final String TAG ="tag";
+    public static final String ID = "objectId";
+    public static final String DESCRIPTION ="description";
+    public static final String PRAISE ="praise";
+    public static final String PHOTO ="photo";
+    public static final String GOOGLELOCATIONID ="googlelocationid";
+    public static final String STATUS ="status";
+    public static final String TAG ="tag";
+    public static final String COUNTRY ="country";
+    public static final String CARD_TITLE = "title";
+    public static final String LOCATION_FULL_NAME = "location_full_name";
 
     public TripCard() {
 
@@ -33,6 +37,10 @@ public class TripCard extends ParseObject implements Serializable {
 
     public String getDescription() {
         return getString(DESCRIPTION);
+    }
+
+    public void setDescription(String description) {
+        put(DESCRIPTION, description);
     }
 
     public ParseACL getUser() {
@@ -47,10 +55,17 @@ public class TripCard extends ParseObject implements Serializable {
         return getString(TAG);
     }
 
-    public String getLocationname() {
-        return getString(LOCATIONNAME);
+    public void setTag(String tag) {
+        put(TAG, tag);
     }
 
+    public String getGooglelocationide() {
+        return getString(GOOGLELOCATIONID);
+    }
+
+    public void setGooglelocationid(String id) {
+        put(GOOGLELOCATIONID, id);
+    }
     public int getPraiseCount() {
         return getInt(PRAISE);
     }
@@ -59,12 +74,24 @@ public class TripCard extends ParseObject implements Serializable {
         return getInt(STATUS);
     }
 
+    public void setStatus(int status) {
+        put(STATUS, status);
+    }
+
+    public void setLocationFullName(String location) {
+        put(LOCATION_FULL_NAME, location);
+    }
+
+    public String getLocationFullName() {
+        return getString(LOCATION_FULL_NAME);
+    }
+
     public String getTitle() {
-        return getString("title");
+        return getString(CARD_TITLE);
     }
 
     public void setTitle(String title) {
-        put("title", title);
+        put(CARD_TITLE, title);
     }
 
     public ParseUser getAuthor() {
@@ -75,20 +102,12 @@ public class TripCard extends ParseObject implements Serializable {
         put("author", user);
     }
 
-    public void setTag(String tag) {
-        put("tag", tag);
+    public String getCountry() {
+        return getString(COUNTRY);
     }
 
-    public void setDescription(String description) {
-        put("description", description);
-    }
-
-    public String getLocation() {
-        return getString("location");
-    }
-
-    public void setLocation(String location) {
-        put("location", location);
+    public void setCountry(String country) {
+        put(COUNTRY, country);
     }
 
     public ParseFile getPhotoFile() {
@@ -98,5 +117,7 @@ public class TripCard extends ParseObject implements Serializable {
     public void setPhotoFile(ParseFile file) {
         put("photo", file);
     }
+
+
 
 }
