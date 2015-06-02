@@ -19,13 +19,13 @@ public class LTApplication extends Application {
 		 * In this tutorial, we'll subclass ParseObject for convenience to
 		 * create and modify Meal objects
 		 */
-		ParseObject.registerSubclass(TripCard.class);
+        ParseObject.registerSubclass(TripCard.class);
+        ParseObject.registerSubclass(Feedback.class);
 
 		/*
 		 * Fill in this section with your Parse credentials
 		 */
-        Parse.initialize(this, "TiMEVhz6zDM2zdSQ7g6Nq0fdoHFntP469APrqGIT", "ltiBc3s6tIN1xOKlcZL62cudPNbc6CszYL9WNENg");
-
+        Parse.initialize(this, "e1I4lm4TkcvHwaoKabpn6MdGiW9tijWIRzqgb0ID", "mmSsFBQ9fChI0wohcINvHcXLX7BRBV0gkHhCQWKp");
 		/*
 		 * This app lets an anonymous user create and save photos of meals
 		 * they've eaten. An anonymous user is a user that can be created

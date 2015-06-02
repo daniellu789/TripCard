@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class TripCardDetailActivity extends Activity {
+public class TripCardDetailActivity extends ActionBarActivity {
     private static final String LOG_TAG = TripCardDetailActivity.class.getSimpleName();
 
     TripCardAdapter mAdapter;
@@ -45,6 +47,8 @@ public class TripCardDetailActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.actionBarSytle);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_card_detail);
         nRandomCounter = 0;
@@ -152,8 +156,23 @@ public class TripCardDetailActivity extends Activity {
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return false;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_trip_card_detail, menu);
+        LTLog.debug(LOG_TAG, "menu???");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.detail_activity_feedback) {
+            Intent intent = new Intent(this, FeedbackActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void showToast(String content) {

@@ -31,9 +31,9 @@ public class LTAPIConstants {
            ini LOCALIZE MAP, now only supporting English and Chinese
          */
 
-        String[] Contents = {"Select", "Others", "Transportation", "Attraction", "Hotel", "History",
+        String[] Contents = {"Please Select", "Others", "Transportation", "Attraction", "Hotel", "History",
                 "Season", "Animal", "Schedule", "Lodging", "Restaurant", "Camera", "Gallery",
-                "Cancel", "Add a Photo", "Description", "Tag", "Location", "Photo", "Please add ", "."
+                "Cancel", "Add a Photo", "Description", "Tag", "Location", "Photo", "Please add: ", "."
                 , "DISCARD?"};
         String lang = Locale.getDefault().getDisplayLanguage();
         LTLog.debug(LOG_TAG, "the language of this device is " + lang);

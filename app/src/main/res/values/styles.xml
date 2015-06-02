@@ -22,8 +22,18 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="Theme.YourTheme.Styled.ActionBar.TitleTextStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textSize">12sp</item>
+    <style name="actionBarSytle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="homeAsUpIndicator">@drawable/back_button</item>
+        <item name="colorPrimary">#589100</item>
+        <item name="colorPrimaryDark">#4B7E37</item>
+        <item name="colorAccent">#589100</item>
+        <item name="actionMenuTextAppearance">@style/MyActionBar.MenuTextStyle</item>
+    </style>
+
+    <style name="MyActionBar.MenuTextStyle"
+        parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#F0F</item>
+        <item name="android:textSize">19sp</item>
     </style>
 
 </resources>

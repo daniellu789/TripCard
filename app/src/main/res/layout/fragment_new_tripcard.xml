@@ -41,7 +41,7 @@
         android:id="@+id/card_description"
         android:layout_width="wrap_content"
         android:gravity="top"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:ems="100"
         android:hint="@string/card_description"
         android:inputType="textMultiLine" >
