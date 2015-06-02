@@ -75,10 +75,10 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
     private ImageView closeImage;
     private LocationElement location;
     private AutoCompleteTextView autoCompView;
-    private static final String TAKE_PHOTO = "拍照";
-    private static final String CANCEL = "取消";
-    private static final String GALLERY = "相册";
-    private static final String ADD_PHOTO = "添加照片";
+    private static final String TAKE_PHOTO = LTAPIConstants.LOCALIZE.get("KEY_CAMERA");
+    private static final String CANCEL = LTAPIConstants.LOCALIZE.get("KEY_CANCEL");;
+    private static final String GALLERY = LTAPIConstants.LOCALIZE.get("KEY_GALLERY");;
+    private static final String ADD_PHOTO = LTAPIConstants.LOCALIZE.get("KEY_ADD A PHOTO");;
 
 
     private ParseFile photoFile;
@@ -276,7 +276,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
 
     public void returnAlert() {
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create(); //Read Update
-        alertDialog.setMessage(LTAPIConstants.CONFIRM_CLOSE);
+        alertDialog.setMessage(LTAPIConstants.LOCALIZE.get("KEY_DISCARD?"));
         alertDialog.setButton("OK!", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 getActivity().setResult(Activity.RESULT_CANCELED);
@@ -339,25 +339,25 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
 //            list.add("卡片名称");
 //        }
         if (bDescription) {
-            list.add("描述");
+            list.add(LTAPIConstants.LOCALIZE.get("KEY_DESCRIPTION"));
         }
         if (bTag) {
-            list.add("标签");
+            list.add(LTAPIConstants.LOCALIZE.get("KEY_TAG"));
         }
         if (bLocation) {
-            list.add("地点");
+            list.add(LTAPIConstants.LOCALIZE.get("KEY_LOCATION"));
         }
         if (bPhoto) {
-            list.add("照片");
+            list.add(LTAPIConstants.LOCALIZE.get("KEY_PHOTO"));
         }
         if (!list.isEmpty()) {
-            sb.append("请添加");
+            sb.append(LTAPIConstants.LOCALIZE.get("KEY_PLEASE ADD"));
             for (int i = 0; i < list.size() - 1; i++) {
                 sb.append(list.get(i));
                 sb.append(",");
             }
             sb.append(list.get(list.size() - 1));
-            sb.append("。");
+            sb.append(LTAPIConstants.LOCALIZE.get("KEY_."));
         }
         return sb.toString();
     }

@@ -11,10 +11,12 @@ import android.widget.TextView;
 import com.levart.TripCard.API.LTAPIConstants;
 import com.levart.TripCard.R;
 import com.levart.TripCard.TripCard;
+import com.levart.TripCard.utils.LTLog;
 import com.parse.ParseImageView;
 
 
 public class TripCardDetailFragment extends Fragment {
+    private static final String LOG_TAG = TripCardDetailFragment.class.getSimpleName();
 
     private final static String CARD ="TripCard";
     private TripCard mCard;
@@ -38,6 +40,7 @@ public class TripCardDetailFragment extends Fragment {
     public void setTripCard(TripCard tripCard) {
         if (tripCard !=null && mDescription != null) {
             mDescription.setText(tripCard.getDescription());
+            LTLog.error(LOG_TAG, "TAG: " + tripCard.getTag());
             mTag.setText(LTAPIConstants.TAG_TO_NAME.get(tripCard.getTag()));
             mLocation.setText(tripCard.getLocationFullName());
             mPicture.setParseFile(tripCard.getPhoto());
