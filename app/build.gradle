@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'levart_llc'
             keyPassword 'LEVARTLLC123'
-            storeFile file('/Users/dlu/Android/TripCard/tripcard.jks')
+            storeFile file('/Users/dlu/Android/tripcard.jks')
             storePassword 'LEVARTLLC123'
         }
     }

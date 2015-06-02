@@ -73,14 +73,18 @@ public class TripCardDetailActivity extends Activity {
     public void onResume() {
         super.onResume();
         nRandomCounter = 0;
-        updateCards();
+        updateCards(FIRST_LOAD_CARD_NUM, true);
     }
 
-    private void updateCards() {
+    private void updateCards(int loadCardNum, boolean bDescending) {
         ParseQuery<TripCard> parseQuery = ParseQuery.getQuery("TripCard");
         parseQuery.whereEqualTo(TripCard.STATUS, 1);
-        parseQuery.orderByDescending("createdAt");
-        parseQuery.setLimit(FIRST_LOAD_CARD_NUM);
+        if (bDescending) {
+            parseQuery.orderByDescending("createdAt");
+        } else {
+            parseQuery.orderByAscending("createdAt");
+        }
+        parseQuery.setLimit(loadCardNum);
         parseQuery.findInBackground(new FindCallback<TripCard>() {
             @Override
             public void done(List<TripCard> cards, ParseException e) {
@@ -100,7 +104,13 @@ public class TripCardDetailActivity extends Activity {
 
     private void shuffleCards() {
         mAdapter.clearResult();
-        mAdapter.updateData(getRandomCards());
+        List<TripCard> randomCards = getRandomCards();
+        if (randomCards.size() > 0) {
+            mAdapter.updateData(randomCards);
+        } else {
+            updateCards(FIRST_LOAD_CARD_NUM * 4, true);
+        }
+        mViewPager.setCurrentItem(0);
     }
 
     private List<TripCard> getRandomCards() {
