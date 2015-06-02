@@ -17,7 +17,7 @@
     <string name="cancel_button_text">Cancel</string>
     <string name="feedback_description">非常感谢您的反馈帮助我们做的更好!</string>
     <string name="feedback_empty_warn">"对不起，反馈不能为空"</string>
-    <string name="feedback_contact">您的邮箱</string>
+    <string name="feedback_contact">您的邮箱(选填)</string>
     <string name="read_card">看卡片</string>
     <string name="shuffle_card">刷新卡片</string>
     <string name="submit">提  交</string>
