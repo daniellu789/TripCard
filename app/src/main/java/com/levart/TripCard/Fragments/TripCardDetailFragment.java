@@ -40,7 +40,6 @@ public class TripCardDetailFragment extends Fragment {
     public void setTripCard(TripCard tripCard) {
         if (tripCard !=null && mDescription != null) {
             mDescription.setText(tripCard.getDescription());
-            LTLog.error(LOG_TAG, "TAG: " + tripCard.getTag());
             mTag.setText(LTAPIConstants.TAG_TO_NAME.get(tripCard.getTag()));
             mLocation.setText(tripCard.getLocationFullName());
             mPicture.setParseFile(tripCard.getPhoto());
@@ -68,6 +67,4 @@ public class TripCardDetailFragment extends Fragment {
         setTripCard(mCard);
         return view;
     }
-
-
 }

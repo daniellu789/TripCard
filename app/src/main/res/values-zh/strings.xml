@@ -15,9 +15,13 @@
     <string name="card_description">分享你的精华介绍，帮助其他旅行者了解关于这个点放的点滴</string>
     <string name="save_button_text">提 交</string>
     <string name="cancel_button_text">Cancel</string>
+    <string name="feedback_description">非常感谢您的反馈帮助我们做的更好!</string>
+    <string name="feedback_empty_warn">"对不起，反馈不能为空"</string>
+    <string name="feedback_contact">您的邮箱</string>
     <string name="read_card">看卡片</string>
     <string name="shuffle_card">刷新卡片</string>
-    <string name="submit">提  交  </string>
+    <string name="submit">提  交</string>
+    <string name="detail_activity_feedback">反馈</string>
     <string name="write_card">写卡片</string>
     <string name="already_save">收藏</string>
     <array name="ratings_array">
@@ -44,6 +48,7 @@
     <string name="title_activity_google_places_autocomplete">GooglePlacesAutocomplete</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_feedback">反馈</string>
 
 
 </resources>

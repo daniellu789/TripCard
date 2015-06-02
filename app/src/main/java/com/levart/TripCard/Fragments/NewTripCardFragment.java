@@ -338,20 +338,21 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
 //        if (bTitle) {
 //            list.add("卡片名称");
 //        }
+
+        if (bPhoto) {
+            list.add(LTAPIConstants.LOCALIZE.get("KEY_PHOTO"));
+        }
+        if (bLocation) {
+            list.add(LTAPIConstants.LOCALIZE.get("KEY_LOCATION"));
+        }
         if (bDescription) {
             list.add(LTAPIConstants.LOCALIZE.get("KEY_DESCRIPTION"));
         }
         if (bTag) {
             list.add(LTAPIConstants.LOCALIZE.get("KEY_TAG"));
         }
-        if (bLocation) {
-            list.add(LTAPIConstants.LOCALIZE.get("KEY_LOCATION"));
-        }
-        if (bPhoto) {
-            list.add(LTAPIConstants.LOCALIZE.get("KEY_PHOTO"));
-        }
         if (!list.isEmpty()) {
-            sb.append(LTAPIConstants.LOCALIZE.get("KEY_PLEASE ADD"));
+            sb.append(LTAPIConstants.LOCALIZE.get("KEY_PLEASE ADD:"));
             for (int i = 0; i < list.size() - 1; i++) {
                 sb.append(list.get(i));
                 sb.append(",");

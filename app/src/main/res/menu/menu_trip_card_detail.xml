@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.levart.TripCard.Activities.TripCardDetailActivity">
 
-    <item android:id="@+id/read_card"
-          android:title="@string/read_card"
-          android:icon="@drawable/read_card_normal">
-
+    <item android:id="@+id/detail_activity_feedback"
+        app:showAsAction="always"
+        android:title="@string/detail_activity_feedback">
     </item>
 
 

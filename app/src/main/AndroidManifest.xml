@@ -32,7 +32,6 @@
         <activity
             android:name=".Activities.MealListActivity"
             android:label="@string/title_activity_meal_list" >
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.Activity" />
@@ -40,8 +39,7 @@
         <activity
             android:name=".Activities.NewTripCardActivity"
             android:label="@string/new_card_cancel"
-            android:parentActivityName=".Activities.TripCardDetailActivity"
-            >
+            android:parentActivityName=".Activities.TripCardDetailActivity" >
         </activity>
         <activity
             android:name=".Activities.SettingsActivity"
@@ -52,13 +50,18 @@
         </activity>
         <activity
             android:name=".Activities.TripCardDetailActivity"
-            android:label="@string/title_activity_trip_card_detail">
+            android:label="@string/title_activity_trip_card_detail" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
                 android:value="com.levart.TripCard.Activities.MealListActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.FeedbackActivity"
+            android:label="@string/title_activity_feedback"
+            android:parentActivityName=".Activities.TripCardDetailActivity">
         </activity>
     </application>
 

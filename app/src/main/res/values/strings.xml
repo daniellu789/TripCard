@@ -12,16 +12,20 @@
     <string name="card_tag">#</string>
     <string name="card_location">Where is the Location?</string>
     <string name="card_location_colon">Location: </string>
-    <string name="card_description">Share your knowledge and help others know this place..</string>
+    <string name="card_description">Share your knowledge and help others know this place...</string>
+    <string name="feedback_description">Thank you very much for your feedback to help improve our product!</string>
+    <string name="feedback_contact">Your Email</string>
+    <string name="feedback_empty_warn">Sorry, feeback cannot be empty</string>
     <string name="save_button_text">Submit</string>
     <string name="cancel_button_text">Cancel</string>
     <string name="read_card">Read</string>
     <string name="shuffle_card">Shuffle</string>
     <string name="submit">Submit</string>
+    <string name="detail_activity_feedback">Feedback</string>
     <string name="write_card">Write</string>
     <string name="already_save">Save</string>
     <array name="ratings_array">
-        <item>Select</item>
+        <item>Please Select</item>
         <item>Transportation</item>
         <item>Attraction</item>
         <item>Hotel</item>
@@ -44,6 +48,7 @@
     <string name="title_activity_google_places_autocomplete">GooglePlacesAutocomplete</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_feedback">Feedback</string>
 
 
 </resources>
