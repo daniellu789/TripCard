@@ -45,8 +45,11 @@ public class TripCardDetailFragment extends Fragment {
             mPicture.setParseFile(tripCard.getPhoto());
             mPicture.loadInBackground();
         }
-
     }
+
+//    public void loadImage() {
+//        mPicture.loadInBackground();
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

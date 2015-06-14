@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Levart</string>
+    <string name="app_name">TripCard</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_meal_list">Levart</string>
     <string name="title_activity_new_meal">NewMealActivity</string>
@@ -28,7 +28,7 @@
         <item>Please Select</item>
         <item>Transportation</item>
         <item>Attraction</item>
-        <item>Hotel</item>
+        <item>Activity</item>
         <item>History</item>
         <item>Season</item>
         <item>Animal</item>

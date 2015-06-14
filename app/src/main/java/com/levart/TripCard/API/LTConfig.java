@@ -5,6 +5,6 @@ package com.levart.TripCard.API;
  */
 public class LTConfig {
     public static final boolean DEBUG = false;
-    public static final int DETAIL_PAGE_CARD_NUM = 5;
+    public static final int DETAIL_PAGE_CARD_NUM = 20;
     public static final int DETAIL_PAGE_FIRST_LOAD_CARD_NUM = 200;
 }

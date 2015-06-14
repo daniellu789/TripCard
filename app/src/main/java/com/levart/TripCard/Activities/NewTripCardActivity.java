@@ -29,8 +29,8 @@ public class NewTripCardActivity extends ActionBarActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
         tCard = new TripCard();
-//		requestWindowFeature(Window.FEATURE_NO_TITLE);
-//		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setTheme(R.style.newCard);
 
         super.onCreate(savedInstanceState);
@@ -61,9 +61,12 @@ public class NewTripCardActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        final NewTripCardFragment fragment = (NewTripCardFragment) getFragmentManager().findFragmentById(R.id.fragmentContainer);
-        fragment.returnAlert();
-//        if (fragment.allowBackPressed()) { // and then you define a method allowBackPressed with the logic to allow back pressed or not
+        final Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentContainer);
+        if (fragment instanceof NewTripCardFragment) {
+            NewTripCardFragment newTripCardFragmentfragment = (NewTripCardFragment) fragment;
+            newTripCardFragmentfragment.returnAlert();
+        }
+        //        if (fragment.allowBackPressed()) { // and then you define a method allowBackPressed with the logic to allow back pressed or not
 //            super.onBackPressed();
 //        }
     }
@@ -71,14 +74,20 @@ public class NewTripCardActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        final NewTripCardFragment fragment = (NewTripCardFragment) getFragmentManager().findFragmentById(R.id.fragmentContainer);
+        final Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentContainer);
         if (id == android.R.id.home)
         {
-            fragment.returnAlert();
+            if (fragment instanceof NewTripCardFragment) {
+                NewTripCardFragment newTripCardFragmentfragment = (NewTripCardFragment) fragment;
+                newTripCardFragmentfragment.returnAlert();
+            }
             return true;
 
         } else if (id == R.id.submit) {
-            fragment.submitCard();
+            if (fragment instanceof NewTripCardFragment) {
+                NewTripCardFragment newTripCardFragmentfragment = (NewTripCardFragment) fragment;
+                newTripCardFragmentfragment.submitCard();
+            }
         }
         return super.onOptionsItemSelected(item);
     }

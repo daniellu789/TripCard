@@ -28,6 +28,7 @@ import com.levart.TripCard.Adapters.TripCardAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class TripCardDetailActivity extends ActionBarActivity {
     private static final String LOG_TAG = TripCardDetailActivity.class.getSimpleName();
@@ -65,6 +66,26 @@ public class TripCardDetailActivity extends ActionBarActivity {
             }
         });
 
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position)
+            {
+                LTLog.debug(LOG_TAG, "current position: " + position + " positionOffset: "
+                        + " positionOffsetPixels: ");
+
+            }
+            @Override
+            public void onPageScrollStateChanged(int state)
+            {
+            }
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
+            {
+//                LTLog.debug(LOG_TAG, "current position: " + position + " positionOffset: " + positionOffset
+//                        + " positionOffsetPixels: "+ positionOffsetPixels);
+            }
+        });
+
         mToolBar.setShuffleListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +109,7 @@ public class TripCardDetailActivity extends ActionBarActivity {
         } else {
             parseQuery.orderByAscending("createdAt");
         }
+        queryLangSort(parseQuery);
         parseQuery.setLimit(loadCardNum);
         parseQuery.findInBackground(new FindCallback<TripCard>() {
             @Override
@@ -129,6 +151,7 @@ public class TripCardDetailActivity extends ActionBarActivity {
             mArrayCards[i] = temp;
         }
         nRandomCounter += PAGE_CARD_NUM;
+        LTLog.debug(LOG_TAG, "length of random card: " + ret.size());
         return ret;
     }
 
@@ -139,6 +162,7 @@ public class TripCardDetailActivity extends ActionBarActivity {
             ParseQuery<TripCard> parseQuery = ParseQuery.getQuery("TripCard");
             parseQuery.whereEqualTo(TripCard.STATUS, 1);
             parseQuery.orderByDescending("createdAt");
+            queryLangSort(parseQuery);
             parseQuery.setLimit(FIRST_LOAD_CARD_NUM);
             parseQuery.findInBackground(new FindCallback<TripCard>() {
                 @Override
@@ -161,6 +185,14 @@ public class TripCardDetailActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_trip_card_detail, menu);
         LTLog.debug(LOG_TAG, "menu???");
         return true;
+    }
+
+    private void queryLangSort(ParseQuery<TripCard> query) {
+        if (Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English")) {
+            query.orderByAscending(TripCard.DESCRIPTION_LANG);
+        } else {
+            query.orderByDescending(TripCard.DESCRIPTION_LANG);
+        }
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
@@ -169,7 +170,7 @@ public class CameraFragment extends Fragment {
 		((NewTripCardActivity) getActivity()).getCurrentTripCard().setPhotoFile(
 				photoFile);
 		FragmentManager fm = getActivity().getFragmentManager();
-		fm.popBackStack("NewMealFragment",
+		fm.popBackStack("NewTripCardFragment",
 				FragmentManager.POP_BACK_STACK_INCLUSIVE);
 	}
 
