@@ -41,6 +41,10 @@ public class TripCardAdapter extends FragmentStatePagerAdapter {
         return hm.get(index);
     }
 
+//    public Fragment loadImage(int index) {
+//        hm.get(index).loadImage();
+//    }
+
     @Override
     public int getCount() {
         return mTripCards.size();

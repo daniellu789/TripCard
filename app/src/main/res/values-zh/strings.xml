@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Levart</string>
+    <string name="app_name">TripCard</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_meal_list">Levart</string>
     <string name="title_activity_new_meal">NewMealActivity</string>
@@ -17,7 +17,7 @@
     <string name="cancel_button_text">Cancel</string>
     <string name="feedback_description">非常感谢您的反馈帮助我们做的更好!</string>
     <string name="feedback_empty_warn">"对不起，反馈不能为空"</string>
-    <string name="feedback_contact">您的邮箱</string>
+    <string name="feedback_contact">您的邮箱(选填)</string>
     <string name="read_card">看卡片</string>
     <string name="shuffle_card">刷新卡片</string>
     <string name="submit">提  交</string>
@@ -28,7 +28,7 @@
         <item>请选择</item>
         <item>交通</item>
         <item>景点</item>
-        <item>酒店</item>
+        <item>活动</item>
         <item>历史</item>
         <item>季节</item>
         <item>动物</item>

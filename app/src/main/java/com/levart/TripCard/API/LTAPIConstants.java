@@ -16,7 +16,7 @@ public class LTAPIConstants {
     public static final int TAG_TRAFFIC = 1;
     public static final int TAG_ATTRACTION = 2;
     public static final String GOOGLE_PROVIDER = "GOOGLE";
-    public static final int IMAGE_WIDTH_SIZE = 800;
+    public static final int IMAGE_WIDTH_SIZE = 1200;
     public static final String GOOGLE_PLACE_API_KEY = "AIzaSyBcBkS15uizw9ZDv6NSv3toBj-NhV1I-n8";
     public static final String KEYWORD = "关键词：";
     public static final String S_FAIL_TO_PARSE = "fail_to_parse";
@@ -31,7 +31,7 @@ public class LTAPIConstants {
            ini LOCALIZE MAP, now only supporting English and Chinese
          */
 
-        String[] Contents = {"Please Select", "Others", "Transportation", "Attraction", "Hotel", "History",
+        String[] Contents = {"Please Select", "Others", "Transportation", "Attraction", "Activity", "History",
                 "Season", "Animal", "Schedule", "Lodging", "Restaurant", "Camera", "Gallery",
                 "Cancel", "Add a Photo", "Description", "Tag", "Location", "Photo", "Please add: ", "."
                 , "DISCARD?"};
@@ -43,7 +43,7 @@ public class LTAPIConstants {
                 LOCALIZE.put("KEY_" + item.toUpperCase().trim(), item);
             }
         } else {
-            String[] ChineseContents = {"请选择", "其他", "交通", "景点", "酒店", "历史",
+            String[] ChineseContents = {"请选择", "其他", "交通", "景点", "活动", "历史",
                     "季节", "动物", "行程", "住宿", "餐厅", "相机", "相册", "取消","添加照片",
                     "描述", "标签", "地点", "照片", "请添加", "。", "取消编辑？"};
             for (int i = 0; i < Contents.length; i++) {

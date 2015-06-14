@@ -24,7 +24,7 @@ public class Feedback extends ParseObject implements Serializable {
     }
 
     public void setFeedback(String feedback) {
-        put(FEEDBACK_CONTACT, feedback);
+        put(FEEDBACK_CONTENT, feedback);
     }
 
     public String getFeedbackContact() {

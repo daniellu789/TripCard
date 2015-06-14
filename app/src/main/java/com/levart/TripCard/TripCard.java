@@ -18,6 +18,7 @@ public class TripCard extends ParseObject implements Serializable {
 
     public static final String ID = "objectId";
     public static final String DESCRIPTION ="description";
+    public static final String DESCRIPTION_LANG ="description_lang";
     public static final String PRAISE ="praise";
     public static final String PHOTO ="photo";
     public static final String GOOGLELOCATIONID ="googlelocationid";
@@ -41,6 +42,14 @@ public class TripCard extends ParseObject implements Serializable {
 
     public void setDescription(String description) {
         put(DESCRIPTION, description);
+    }
+
+    public String getDescriptionLang() {
+        return getString(DESCRIPTION_LANG);
+    }
+
+    public void setDescriptionLang(String descriptionLang) {
+        put(DESCRIPTION_LANG, descriptionLang);
     }
 
     public ParseACL getUser() {

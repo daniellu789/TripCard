@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 ;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -137,7 +138,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
         FragmentTransaction transaction = getActivity().getFragmentManager()
                 .beginTransaction();
         transaction.replace(R.id.fragmentContainer, cameraFragment);
-        transaction.addToBackStack("NewMealFragment");
+        transaction.addToBackStack("NewTripCardFragment");
         transaction.commit();
     }
 
@@ -219,9 +220,6 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
     private void addPhotoToMealAndReturn(ParseFile photoFile) {
         ((NewTripCardActivity) getActivity()).getCurrentTripCard().setPhotoFile(
                 photoFile);
-        Toast.makeText(getActivity(),
-                "show preview? ",
-                Toast.LENGTH_LONG).show();
         FragmentManager fm = getActivity().getFragmentManager();
         fm.popBackStack("MealListActivity",
                 FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -250,10 +248,12 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
 //                imm.hideSoftInputFromWindow(cardTitle.getWindowToken(), 0);
                 startCamera();
             } else if (items[item].equals(GALLERY)) {
-                 Intent intent = new Intent(Intent.ACTION_PICK,
-                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                 intent.setType("image/*");
-                 startActivityForResult(Intent.createChooser(intent, "Select File"), 1);
+//                 Intent intent = new Intent(Intent.ACTION_PICK,
+//                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                 intent.setType("image/*");
+                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, 1);
+//                 startActivityForResult(Intent.createChooser(intent, "Select File"), 1);
             } else if (items[item].equals(CANCEL)) {
                  dialog.dismiss();
             }
@@ -301,7 +301,11 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
             return;
         }
         TripCard tCard = ((NewTripCardActivity) getActivity()).getCurrentTripCard();
-
+        if (Utils.isEnglishchar(description.trim().charAt(0))) {
+            tCard.setDescriptionLang("en");
+        } else {
+            tCard.setDescriptionLang("zh");
+        }
 //        tCard.setTitle(cardTitle.getText().toString());
         tCard.setDescription(cardDescription.getText().toString());
         tCard.setCountry(location.getCountryCode());

@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Levart</string>
+    <string name="app_name">TripCard</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_meal_list">Levart</string>
     <string name="title_activity_new_meal">NewMealActivity</string>
@@ -13,8 +13,8 @@
     <string name="card_location">Where is the Location?</string>
     <string name="card_location_colon">Location: </string>
     <string name="card_description">Share your knowledge and help others know this place...</string>
-    <string name="feedback_description">Thank you very much for your feedback to help improve our product!</string>
-    <string name="feedback_contact">Your Email</string>
+    <string name="feedback_description">Thank you very much for your feedback to help us improve!</string>
+    <string name="feedback_contact">Your Email(optional)</string>
     <string name="feedback_empty_warn">Sorry, feeback cannot be empty</string>
     <string name="save_button_text">Submit</string>
     <string name="cancel_button_text">Cancel</string>
@@ -28,7 +28,7 @@
         <item>Please Select</item>
         <item>Transportation</item>
         <item>Attraction</item>
-        <item>Hotel</item>
+        <item>Activity</item>
         <item>History</item>
         <item>Season</item>
         <item>Animal</item>
