@@ -65,14 +65,13 @@ public class TripCardDetailActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
+        mViewPager.setOffscreenPageLimit(5); // must exceed PRE_LOAD_IMAGE_NUM;
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int position)
             {
-                LTLog.debug(LOG_TAG, "current position: " + position + " positionOffset: "
-                        + " positionOffsetPixels: ");
-
+//                LTLog.debug(LOG_TAG, "current position: " + position);
+//                mAdapter.loadImages(position, position + LTConfig.PRE_LOAD_IMAGE_NUM );
             }
             @Override
             public void onPageScrollStateChanged(int state)
@@ -81,8 +80,6 @@ public class TripCardDetailActivity extends ActionBarActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
             {
-//                LTLog.debug(LOG_TAG, "current position: " + position + " positionOffset: " + positionOffset
-//                        + " positionOffsetPixels: "+ positionOffsetPixels);
             }
         });
 
@@ -121,6 +118,7 @@ public class TripCardDetailActivity extends ActionBarActivity {
                     int index = Math.min(mArrayCards.length, PAGE_CARD_NUM);
                     mAdapter.updateData(Arrays.asList(mArrayCards).subList(0, index));
                     nRandomCounter = index;
+                    mViewPager.setCurrentItem(0);
                 }
             } else {
             }
@@ -133,10 +131,10 @@ public class TripCardDetailActivity extends ActionBarActivity {
         List<TripCard> randomCards = getRandomCards();
         if (randomCards.size() > 0) {
             mAdapter.updateData(randomCards);
+            mViewPager.setCurrentItem(0);
         } else {
             updateCards(FIRST_LOAD_CARD_NUM * 4, true);
         }
-        mViewPager.setCurrentItem(0);
     }
 
     private List<TripCard> getRandomCards() {
