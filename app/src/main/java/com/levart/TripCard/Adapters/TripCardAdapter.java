@@ -8,6 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.ViewGroup;
 
 
+import com.levart.TripCard.API.LTConfig;
 import com.levart.TripCard.TripCard;
 import com.levart.TripCard.Fragments.TripCardDetailFragment;
 import com.levart.TripCard.utils.LTLog;
@@ -37,13 +38,25 @@ public class TripCardAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int index) {
+        LTLog.debug(LOG_TAG, "going to getItem: " + index);
         hm.put(index, TripCardDetailFragment.newInstance(mTripCards.get(index)));
         return hm.get(index);
     }
 
-//    public Fragment loadImage(int index) {
-//        hm.get(index).loadImage();
-//    }
+    public void loadImages(int begin, int end) {
+        for (int i = begin; i <= end; i++) {
+            loadImage(i);
+        }
+    }
+
+    public void loadImage(int index) {
+        TripCardDetailFragment cur = hm.get(index);
+        LTLog.debug(LOG_TAG, "going to load image: " + index);
+        if (cur != null) {
+            LTLog.debug(LOG_TAG, "loading image: " + index);
+            hm.get(index).loadImage();
+        }
+    }
 
     @Override
     public int getCount() {
@@ -61,6 +74,7 @@ public class TripCardAdapter extends FragmentStatePagerAdapter {
 
     public synchronized void clearResult() {
         mTripCards.clear();
+        hm.clear();
         notifyDataSetChanged();
     }
 }

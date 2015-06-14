@@ -24,6 +24,7 @@ public class TripCardDetailFragment extends Fragment {
     private TextView mTag;
     private TextView mLocation;
     private ParseImageView mPicture;
+    private boolean isImageLoad = false;
 
     public static TripCardDetailFragment newInstance(TripCard card) {
         TripCardDetailFragment fragment = new TripCardDetailFragment();
@@ -43,13 +44,20 @@ public class TripCardDetailFragment extends Fragment {
             mTag.setText(LTAPIConstants.TAG_TO_NAME.get(tripCard.getTag()));
             mLocation.setText(tripCard.getLocationFullName());
             mPicture.setParseFile(tripCard.getPhoto());
+            LTLog.debug(LOG_TAG, "b image loaded!!" + tripCard.getPhoto());
             mPicture.loadInBackground();
+            LTLog.debug(LOG_TAG, "d image loaded!!");
+
         }
     }
 
-//    public void loadImage() {
-//        mPicture.loadInBackground();
-//    }
+    public void loadImage() {
+        if (!isImageLoad) {
+            mPicture.loadInBackground();
+            isImageLoad = true;
+            LTLog.debug(LOG_TAG, "image loaded!!");
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
