@@ -11,6 +11,7 @@
     <string name="card_title">卡片名称</string>
     <string name="card_tag">标签:</string>
     <string name="card_location">地点在哪</string>
+    <string name="card_author">作者</string>
     <string name="card_location_colon">地点:</string>
     <string name="card_description">分享你的精华介绍，帮助其他旅行者了解关于这个点放的点滴</string>
     <string name="save_button_text">提 交</string>

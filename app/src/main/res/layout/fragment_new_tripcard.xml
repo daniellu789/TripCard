@@ -49,6 +49,15 @@
     </EditText>
 
 
+    <EditText
+        android:id="@+id/card_author"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:ems="100"
+        android:hint="@string/card_author" >
+        <requestFocus />
+    </EditText>
+
     <TableRow
         android:id="@+id/tableRow2"
         android:layout_width="wrap_content"

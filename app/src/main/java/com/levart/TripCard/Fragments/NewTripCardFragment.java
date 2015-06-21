@@ -76,6 +76,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
     private ImageView closeImage;
     private LocationElement location;
     private AutoCompleteTextView autoCompView;
+    private TextView author;
     private static final String TAKE_PHOTO = LTAPIConstants.LOCALIZE.get("KEY_CAMERA");
     private static final String CANCEL = LTAPIConstants.LOCALIZE.get("KEY_CANCEL");;
     private static final String GALLERY = LTAPIConstants.LOCALIZE.get("KEY_GALLERY");;
@@ -101,6 +102,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
         googlePlaceAdapter = new GooglePlacesAutocompleteAdapter(getActivity(), R.layout.list_item);
 //        cardTitle = ((EditText) v.findViewById(R.id.meal_name));
         cardDescription = ((EditText) v.findViewById(R.id.card_description));
+        author = ((EditText) v.findViewById(R.id.card_author));
         LTLog.debug(LOG_TAG,"creating a new card");
         cardTag = ((Spinner) v.findViewById(R.id.rating_spinner));
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
@@ -291,11 +293,13 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
         String description = cardDescription.getText().toString();
         String tag = LTAPIConstants.NAME_TO_TAG.get(cardTag.getSelectedItem().toString());
         String locationText = autoCompView.getText().toString();
+        String CardAuthor = author.getText().toString();
         boolean test = photoFile == null;
         LTLog.debug(LOG_TAG, "danjie: " + test);
         String emptyComplain = buildSubmitEmptyComplain(
                 Utils.isEmptyString(description), "-1".equals(tag),
-                Utils.isEmptyString(locationText), photoFile == null);
+                Utils.isEmptyString(locationText), photoFile == null,
+                Utils.isEmptyString(CardAuthor));
         if (!Utils.isEmptyString(emptyComplain)) {
             ShowToast(emptyComplain);
             return;
@@ -309,6 +313,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
 //        tCard.setTitle(cardTitle.getText().toString());
         tCard.setDescription(cardDescription.getText().toString());
         tCard.setCountry(location.getCountryCode());
+        tCard.setCardAuthor(CardAuthor);
         tCard.setLocationFullName(locationText);
         tCard.setStatus(1);
         tCard.setGooglelocationid(location.getLocationId());
@@ -336,7 +341,7 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
     }
 
     private String buildSubmitEmptyComplain(boolean bDescription, boolean bTag,
-                                            boolean bLocation, boolean bPhoto) {
+                                  boolean bLocation, boolean bPhoto, boolean bAuthor) {
         StringBuilder sb = new StringBuilder();
         List<String> list = new ArrayList<>();
 //        if (bTitle) {
@@ -351,6 +356,9 @@ public class NewTripCardFragment extends Fragment implements AdapterView.OnItemC
         }
         if (bDescription) {
             list.add(LTAPIConstants.LOCALIZE.get("KEY_DESCRIPTION"));
+        }
+        if (bAuthor) {
+            list.add(LTAPIConstants.LOCALIZE.get("KEY_AUTHOR"));
         }
         if (bTag) {
             list.add(LTAPIConstants.LOCALIZE.get("KEY_TAG"));

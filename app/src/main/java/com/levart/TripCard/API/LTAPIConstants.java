@@ -33,7 +33,7 @@ public class LTAPIConstants {
 
         String[] Contents = {"Please Select", "Others", "Transportation", "Attraction", "Activity", "History",
                 "Season", "Animal", "Schedule", "Lodging", "Restaurant", "Camera", "Gallery",
-                "Cancel", "Add a Photo", "Description", "Tag", "Location", "Photo", "Please add: ", "."
+                "Cancel", "Add a Photo", "Description", "Author", "Tag", "Location", "Photo", "Please add: ", "."
                 , "DISCARD?"};
         String lang = Locale.getDefault().getDisplayLanguage();
         LTLog.debug(LOG_TAG, "the language of this device is " + lang);
@@ -45,7 +45,7 @@ public class LTAPIConstants {
         } else {
             String[] ChineseContents = {"请选择", "其他", "交通", "景点", "活动", "历史",
                     "季节", "动物", "行程", "住宿", "餐厅", "相机", "相册", "取消","添加照片",
-                    "描述", "标签", "地点", "照片", "请添加", "。", "取消编辑？"};
+                    "描述", "作者","标签", "地点", "照片", "请添加", "。", "取消编辑？"};
             for (int i = 0; i < Contents.length; i++) {
                 String item = Contents[i];
                 LOCALIZE.put("KEY_" + item.toUpperCase().trim(), ChineseContents[i]);

@@ -18,9 +18,12 @@ public class TripCard extends ParseObject implements Serializable {
 
     public static final String ID = "objectId";
     public static final String DESCRIPTION ="description";
+    public static final String PHOTO_CODE ="photo_code";
+
     public static final String DESCRIPTION_LANG ="description_lang";
     public static final String PRAISE ="praise";
     public static final String PHOTO ="photo";
+    public static final String PHOTO_1200 ="photo_1200";
     public static final String GOOGLELOCATIONID ="googlelocationid";
     public static final String STATUS ="status";
     public static final String TAG ="tag";
@@ -57,7 +60,7 @@ public class TripCard extends ParseObject implements Serializable {
     }
 
     public ParseFile getPhoto() {
-        return getParseFile(PHOTO);
+        return getParseFile(PHOTO_1200);
     }
 
     public String getTag() {
@@ -109,6 +112,10 @@ public class TripCard extends ParseObject implements Serializable {
 
     public void setAuthor(ParseUser user) {
         put("author", user);
+    }
+
+    public void setCardAuthor(String user) {
+        put("card_author", user);
     }
 
     public String getCountry() {

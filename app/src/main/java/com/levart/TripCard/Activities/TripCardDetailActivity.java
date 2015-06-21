@@ -101,6 +101,7 @@ public class TripCardDetailActivity extends ActionBarActivity {
     private void updateCards(int loadCardNum, boolean bDescending) {
         ParseQuery<TripCard> parseQuery = ParseQuery.getQuery("TripCard");
         parseQuery.whereEqualTo(TripCard.STATUS, 1);
+        parseQuery.whereEqualTo(TripCard.PHOTO_CODE, 2);
         if (bDescending) {
             parseQuery.orderByDescending("createdAt");
         } else {
@@ -159,6 +160,7 @@ public class TripCardDetailActivity extends ActionBarActivity {
         if (mAdapter.isEmpty()) {
             ParseQuery<TripCard> parseQuery = ParseQuery.getQuery("TripCard");
             parseQuery.whereEqualTo(TripCard.STATUS, 1);
+            parseQuery.whereEqualTo(TripCard.PHOTO_CODE, 2);
             parseQuery.orderByDescending("createdAt");
             queryLangSort(parseQuery);
             parseQuery.setLimit(FIRST_LOAD_CARD_NUM);
